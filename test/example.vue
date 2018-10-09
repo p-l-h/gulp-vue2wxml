@@ -14,8 +14,3 @@
     });
 </script>
 
-<config>
-    {
-        a: 1
-    }
-</config>
