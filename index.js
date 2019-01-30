@@ -3,9 +3,7 @@ var path = require('path');
 var fs = require('fs');
 var compiler = require('vue-template-compiler');
 var through = require('through2');
-var gutil = require('gulp-util');
 var sass = require('node-sass');
-var PluginError = gutil.PluginError;
 
 module.exports = function () {
     return through.obj(function(file, enc, callback) {
