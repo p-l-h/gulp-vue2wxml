@@ -1,4 +1,5 @@
-<style>
+<style lang="scss">
+    @import './a';
     h1 {
         font-weight: 500;
     }

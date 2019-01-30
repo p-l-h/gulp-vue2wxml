@@ -1,11 +1,12 @@
 {
   "name": "gulp-vue2wxml",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-util": "^3.0.8"
+    "gulp-util": "^3.0.8",
+    "node-sass": "^4.11.0"
   },
   "dependencies": {
     "through2": "^2.0.3",

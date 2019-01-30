@@ -1,8 +1,10 @@
 
 var path = require('path');
+var fs = require('fs');
 var compiler = require('vue-template-compiler');
 var through = require('through2');
 var gutil = require('gulp-util');
+var sass = require('node-sass');
 var PluginError = gutil.PluginError;
 
 module.exports = function () {
@@ -19,7 +21,24 @@ module.exports = function () {
         var cssFile = file.clone();
         var styles = compiledContent.styles;
         if (styles && styles.length) {
-            cssFile.contents = new Buffer(styles[0].content);
+            var onlyStyle = styles[0];
+            cssFile.contents = new Buffer(onlyStyle.content);
+            if (onlyStyle.lang === 'scss') {
+                var result  = sass.renderSync({
+                    data: onlyStyle.content,
+                    importer: function (url, prev, done) {
+                        if (url.indexOf('./') >= 0) {
+                            if (prev === 'stdin') {
+                                prev = cssFile.path;
+                            }
+                            return {
+                                file: path.resolve(path.dirname(prev), url + '.scss')
+                            };
+                        }
+                    }
+                });
+                cssFile.contents = new Buffer(result.css);
+            }
             cssFile.path = path.join(f.dir, f.name + '.wxss');
             self.push(cssFile);
         }
