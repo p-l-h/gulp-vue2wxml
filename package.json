@@ -1,9 +1,14 @@
 {
   "name": "gulp-vue2wxml",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "index.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pzforever10/gulp-vue2wxml"
+  },
   "devDependencies": {
+    "bootstrap": "^4.2.1",
     "gulp": "^3.9.1",
     "gulp-util": "^3.0.8",
     "node-sass": "^4.11.0"

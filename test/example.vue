@@ -1,5 +1,6 @@
 <style lang="scss">
     @import './a';
+    @import '~bootstrap/scss/bootstrap-reboot';
     h1 {
         font-weight: 500;
     }

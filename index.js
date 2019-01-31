@@ -32,6 +32,14 @@ module.exports = function () {
                             return {
                                 file: path.resolve(path.dirname(prev), url + '.scss')
                             };
+                        } else if (url.indexOf('~') === 0) {
+                            url = url.slice(1).split('/');
+                            var modulePath = path.dirname(require.resolve(url[0] + '/package.json'));
+                            url[0] = modulePath;
+
+                            return {
+                                file: url.join('/') + '.scss'
+                            };
                         }
                     }
                 });
